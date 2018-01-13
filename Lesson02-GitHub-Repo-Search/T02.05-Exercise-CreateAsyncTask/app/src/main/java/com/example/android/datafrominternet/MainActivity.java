@@ -73,16 +73,16 @@ public class MainActivity extends AppCompatActivity {
 
         @Override
         protected String doInBackground(URL... urls) {
-            for (URL url : urls) {
-                try {
-                    NetworkUtils.getResponseFromHttpUrl(url);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+            String githubSearchResults = null;
+            try {
+                return NetworkUtils.getResponseFromHttpUrl(urls[0]);
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-            return null;
-        }
 
+            return githubSearchResults;
+        }
+        
         @Override
         protected void onPostExecute(String s) {
             super.onPostExecute(s);
