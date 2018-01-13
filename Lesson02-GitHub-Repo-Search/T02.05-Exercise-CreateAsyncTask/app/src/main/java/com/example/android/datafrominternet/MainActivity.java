@@ -82,12 +82,11 @@ public class MainActivity extends AppCompatActivity {
 
             return githubSearchResults;
         }
-        
+
         @Override
         protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-
-            mSearchResultsTextView.setText(s.toString());
+            // .equals() checks if the argument is null -- and returns false if it is. Therefore, doing the check this way is equivalent to (s != null && !s.equals(""))
+            if ("".equals(s) == false) mSearchResultsTextView.setText(s.toString());
         }
     }
 
