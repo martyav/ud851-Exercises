@@ -49,10 +49,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void makeGithubSearchQuery() {
-        String editText = mSearchBoxEditText.getText();
+        String editText;
+        editText = mSearchBoxEditText.getText().toString();
         URL textToDisplay;
         textToDisplay = NetworkUtils.buildUrl(editText);
-        mUrlDisplayTextView.setText(textToDisplay);
+        mUrlDisplayTextView.setText(textToDisplay.toString());
     }
 
     @Override
