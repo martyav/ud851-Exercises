@@ -64,7 +64,9 @@ public class MainActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-        // TODO (4) Create a new GithubQueryTask and call its execute method, passing in the url to query
+
+        GithubQueryTask newTask = new GithubQueryTask();
+        newTask.execute(githubSearchUrl);
     }
 
     public class GithubQueryTask extends AsyncTask<URL, Void, String> {
@@ -88,8 +90,6 @@ public class MainActivity extends AppCompatActivity {
             mSearchResultsTextView.setText(s.toString());
         }
     }
-    // TODO (2) Override the doInBackground method to perform the query. Return the results. (Hint: You've already written the code to perform the query)
-    // TODO (3) Override onPostExecute to display the results in the TextView
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
