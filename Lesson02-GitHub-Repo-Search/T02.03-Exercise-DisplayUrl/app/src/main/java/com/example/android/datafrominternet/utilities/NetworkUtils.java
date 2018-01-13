@@ -15,9 +15,12 @@
  */
 package com.example.android.datafrominternet.utilities;
 
+import android.net.Uri;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.HttpURLConnection;
+import java.net.URI;
 import java.net.URL;
 import java.util.Scanner;
 
@@ -45,8 +48,12 @@ public class NetworkUtils {
      * @return The URL to use to query the weather server.
      */
     public static URL buildUrl(String githubSearchQuery) {
-        // TODO (1) Fill in this method to build the proper Github query URL
-        return null;
+        Uri builtURI = Uri.parse(GITHUB_BASE_URL).buildUpon()
+                .appendQueryParameter(PARAM_QUERY, githubSearchQuery)
+                .appendQueryParameter(PARAM_SORT, sortBy)
+                .build();
+
+        return builtURI;
     }
 
     /**
@@ -57,12 +64,12 @@ public class NetworkUtils {
      * @throws IOException Related to network and stream reading
      */
     public static String getResponseFromHttpUrl(URL url) throws IOException {
-        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection();
+        HttpURLConnection urlConnection = (HttpURLConnection) url.openConnection(); // creates a connection but does not look at it yet
         try {
-            InputStream in = urlConnection.getInputStream();
+            InputStream in = urlConnection.getInputStream(); // looks at it
 
-            Scanner scanner = new Scanner(in);
-            scanner.useDelimiter("\\A");
+            Scanner scanner = new Scanner(in); // reads contents
+            scanner.useDelimiter("\\A"); // puts everything after the immediate start of the stream in the next token stream, buffering the data and handles character encoding for us, turning it into UTF-16
 
             boolean hasInput = scanner.hasNext();
             if (hasInput) {
