@@ -117,16 +117,30 @@ public class GreenAdapter extends RecyclerView.Adapter<GreenAdapter.NumberViewHo
         return mNumberItems;
     }
 
-    // TODO (12) Create a class called NumberViewHolder that extends RecyclerView.ViewHolder
+    // TODO (12) COMPLETED Create a class called NumberViewHolder that extends RecyclerView.ViewHolder
 
-    // TODO (13) Within NumberViewHolder, create a TextView variable called listItemNumberView
+    public class NumberViewHolder extends RecyclerView.ViewHolder {
+        TextView listItemNumberView;
 
-    // TODO (14) Create a constructor for NumberViewHolder that accepts a View called itemView as a parameter
-    // TODO (15) Within the constructor, call super(itemView) and then find listItemNumberView by ID
+        public NumberViewHolder(View itemView) {
+            super(itemView);
 
-    // TODO (16) Within the NumberViewHolder class, create a void method called bind that accepts an int parameter called listIndex
-    // TODO (17) Within bind, set the text of listItemNumberView to the listIndex
-    // TODO (18) Be careful to get the String representation of listIndex, as using setText with an int does something different
+            listItemNumberView = (TextView) itemView.findViewById(R.id.tv_item_number);
+        }
 
+        void bind(int listIndex) {
+            listItemNumberView.setText(String.valueOf(listIndex));
+        }
     }
+
+    // TODO (13) COMPLETED Within NumberViewHolder, create a TextView variable called listItemNumberView
+
+    // TODO (14) COMPLETED Create a constructor for NumberViewHolder that accepts a View called itemView as a parameter
+    // TODO (15) COMPLETED Within the constructor, call super(itemView) and then find listItemNumberView by ID
+
+    // TODO (16) COMPLETED Within the NumberViewHolder class, create a void method called bind that accepts an int parameter called listIndex
+    // TODO (17) COMPLETED Within bind, set the text of listItemNumberView to the listIndex
+    // TODO (18) COMPLETED Be careful to get the String representation of listIndex, as using setText with an int does something different
+
 }
+
